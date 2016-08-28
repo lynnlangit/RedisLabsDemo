@@ -1,0 +1,132 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "servers_redis_labs_demo_name": {
+            "defaultValue": "redis-labs-demo",
+            "type": "String"
+        },
+        "databases_master_name": {
+            "defaultValue": "redis-labs-demo/master",
+            "type": "String"
+        },
+        "databases_redis_labs_demo_name": {
+            "defaultValue": "redis-labs-demo/redis-labs-demo",
+            "type": "String"
+        },
+        "firewallRules_AllowAllWindowsAzureIps_name": {
+            "defaultValue": "redis-labs-demo/AllowAllWindowsAzureIps",
+            "type": "String"
+        },
+        "firewallRules_ClientIPAddress_2016_7_5_21_49_45_name": {
+            "defaultValue": "redis-labs-demo/ClientIPAddress_2016-7-5_21-49-45",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/redis-labs-demo/providers/Microsoft.Sql/servers/redis-labs-demo'.",
+            "type": "Microsoft.Sql/servers",
+            "kind": "v12.0",
+            "name": "[parameters('servers_redis_labs_demo_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "Brazil South",
+            "properties": {
+                "administratorLogin": "redis-labs-root",
+                "administratorLoginPassword": null,
+                "version": "12.0"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/redis-labs-demo/providers/Microsoft.Sql/servers/redis-labs-demo/databases/master'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "kind": "v12.0,system",
+            "name": "[parameters('databases_master_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "Brazil South",
+            "properties": {
+                "databaseId": "5a76a121-589c-4551-97ef-61d92a088b88",
+                "edition": "System",
+                "status": "Online",
+                "serviceLevelObjective": "System0",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": "32212254720",
+                "creationDate": "2016-08-27T04:42:09.283Z",
+                "currentServiceObjectiveId": "29dd7459-4a7c-4e56-be22-f0adda49440d",
+                "requestedServiceObjectiveId": "29dd7459-4a7c-4e56-be22-f0adda49440d",
+                "requestedServiceObjectiveName": "System0",
+                "defaultSecondaryLocation": "South Central US",
+                "earliestRestoreDate": null,
+                "elasticPoolName": null,
+                "containmentState": 2
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_redis_labs_demo_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/redis-labs-demo/providers/Microsoft.Sql/servers/redis-labs-demo/databases/redis-lab-demo'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "kind": "v12.0,user",
+            "name": "[parameters('databases_redis_labs_demo_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "Brazil South",
+            "properties": {
+                "databaseId": "6911d985-7426-43af-8003-91a7e317f97d",
+                "edition": "Basic",
+                "status": "Online",
+                "serviceLevelObjective": "Basic",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": "2147483648",
+                "creationDate": "2016-08-27T04:42:41.67Z",
+                "currentServiceObjectiveId": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c",
+                "requestedServiceObjectiveId": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c",
+                "requestedServiceObjectiveName": "Basic",
+                "defaultSecondaryLocation": "South Central US",
+                "earliestRestoreDate": "2016-08-27T04:53:24.813Z",
+                "elasticPoolName": null,
+                "containmentState": 2
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_redis_labs_demo_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/redis-labs-demo/providers/Microsoft.Sql/servers/redis-labs-demo/firewallRules/AllowAllWindowsAzureIps'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_AllowAllWindowsAzureIps_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "Brazil South",
+            "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_redis_labs_demo_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/redis-labs-demo/providers/Microsoft.Sql/servers/redis-labs-demo/firewallRules/ClientIPAddress_2016-7-5_21-49-45'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[parameters('firewallRules_ClientIPAddress_2016_7_5_21_49_45_name')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "Brazil South",
+            "properties": {
+                "startIpAddress": "<your own IP address here>",
+                "endIpAddress": "<your own IP address here>"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_redis_labs_demo_name'))]"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "servers_redis_labs_demo_name": {
+            "value": "<yourServerName>"
+        },
+        "databases_master_name": {
+            "value": "master"
+        },
+        "databases_redis_labs_demo_name": {
+            "value": "<yourDatabaseName>"
+        },
+        "firewallRules_AllowAllWindowsAzureIps_name": {
+            "value": "<yourFirewallRule1Name>"
+        },
+        "firewallRules_ClientIPAddress_2016_7_5_21_49_45_name": {
+            "value": "<yourFirewallRule2Name>"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+SQL_USER=<sqlServerUserName>
+SQL_PASS=<sqlServerPassword>
+SQL_HOST=<sqlAzureEndpoint>
+SQL_DB=<sqlDatabaseName>
+REDIS_PORT=<redisPortNumber>
+REDIS_HOST=<redisLabsEndpoint>
+REDIS_PASS=<redisLabsPassword>
+DEBUG=RedisLabSession:*

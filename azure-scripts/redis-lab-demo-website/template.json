@@ -1,0 +1,76 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "serverfarms_Default1_name": {
+            "defaultValue": "Default1",
+            "type": "String"
+        },
+        "sites_redis_labs_session_name": {
+            "defaultValue": "redis-labs-session",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/Default-Web-SouthCentralUS/providers/Microsoft.Web/serverfarms/Default1'.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
+                "capacity": 0
+            },
+            "name": "[parameters('serverfarms_Default1_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "South Central US",
+            "properties": {
+                "name": "[parameters('serverfarms_Default1_name')]",
+                "numberOfWorkers": 0
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '.../resourceGroups/Default-Web-SouthCentralUS/providers/Microsoft.Web/sites/redis-lab-session'.",
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('sites_redis_labs_session_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "South Central US",
+            "tags": {
+                "project": "redis-labs-demo"
+            },
+            "properties": {
+                "name": "[parameters('sites_redis_labs_session_name')]",
+                "hostNames": [
+                    "redis-labs-session.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "redis-labs-session.azurewebsites.net",
+                    "redis-labs-session.scm.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_redis_labs_session_name'),'.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_redis_labs_session_name'),'.scm.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_Default1_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_Default1_name'))]"
+            ]
+        }
+    ]
+}
