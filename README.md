@@ -4,7 +4,7 @@ Demo of using RedisLabs RedisCloud as a user caching store for a node.js app wit
 
 NOTE: Instructions are for OSX
 
-1. Pre-requesites
+1. Prerequisites
   * install node.js
   * install the npm tedious package (needed to connect to SQL Azure)
   * install azure cli
