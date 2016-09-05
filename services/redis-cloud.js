@@ -18,9 +18,7 @@ module.exports.createSessionStore = function (app) {
         if (err) throw err;
     });
 
-    // IMPORTANT
-    // Here we tell Express to use our RedisLab instance as session store.
-    // We pass the Redis Cloud client that we create
+    // Tell Express to use our RedisLab instance as session store
     app.use(session({
         secret: '<yourRedisLabsRedisCloudSecretKeyValue>',
         store: new RedisStore({client: redisClient}),
