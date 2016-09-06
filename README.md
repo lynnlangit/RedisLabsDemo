@@ -6,7 +6,6 @@ NOTE: Instructions are for OSX
 
 1. Prerequisites
   * install node.js
-  * install the npm tedious package (needed to connect to SQL Azure)
   * install azure cli
   * use a text editor (VSCode, Sublime, etc...)
 
@@ -16,20 +15,23 @@ NOTE: Instructions are for OSX
   * next to 'Cloud' click the drop down, select 'Azure/west-us' and 30MB/Free
   * go to 'My Resources' >'Manage Resources', wait for the green checkmark 
   * note your Redis Cloud endpoint address and Redis password
-
-3. Azure Setup
   * fill in these values on the Redis variables in your 'env' file
-  * fill in your desired SQL values in your 'env' file
-  * rename the 'env' file to '.env'
-  * update 'redis-cloud.js' line 25 to use your value for the 'secret'
-  * open 'deploy-site.sh'
-  * run 'deploy-site.sh' from a bash shell
+  
+3. Azure Setup
+  * fill in your desired values in your 'azure-scripts/redis-lab-demo-sql-server/parameters.json' file
+  * open 'azure-scripts/redis-lab-demo-sql-server/deploy.sh'
+  * run 'azure-scripts/redis-lab-demo-sql-server/deploy.sh' from a bash shell
   * connect to your SQLAzure instance with a client (i.e. Navicat), run scripts
     * run 'user-login.sql' and 'user-status.sql' to create tables
+  * fill in your SQL values in your 'env' file
 
 4. Test the results
+  * update 'redis-cloud.js' line 25 to use your value for the 'secret'
+  * rename the 'env' file to '.env'
+  * run npm install 
   * test with localhost
   * get your ip address and set a firewall rule in azure to test remotely
+  * run the commands in 'azure-scripts/deploy-site.sh'
   * push your code to azure using the following commands
 	  * git add .
 	  * git commit - '{your commit message}'
