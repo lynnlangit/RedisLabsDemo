@@ -1,6 +1,6 @@
 # RedisLabSession #
 ### Handling Sessions with Redis Cloud ###
-Demo of using RedisLabs RedisCloud as a user caching store for a node.js app with SQL Azure
+Demo of using RedisLabs RedisCloud as a user caching store for a node.js app with Azure SQL
 
 NOTE: Instructions are for OSX
 
@@ -21,7 +21,7 @@ NOTE: Instructions are for OSX
   * fill in your desired values in your 'azure-scripts/redis-lab-demo-sql-server/parameters.json' file
   * open 'azure-scripts/redis-lab-demo-sql-server/deploy.sh'
   * run 'azure-scripts/redis-lab-demo-sql-server/deploy.sh' from a bash shell
-  * connect to your SQLAzure instance with a client (i.e. Navicat), run scripts
+  * connect to your Azure SQL instance with a client (i.e. Navicat), run scripts
     * run 'user-login.sql' and 'user-status.sql' to create tables
   * fill in your SQL values in your 'env' file
 
